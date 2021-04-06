@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'com.github.mtzhisham.KLQuery:annotation:0.0.1'
-    implementation 'com.github.mtzhisham.KLQuery:util:0.0.1'
-    kapt 'com.github.mtzhisham.KLQuery:codegen:0.0.1'
+    implementation 'com.github.mtzhisham.KLQuery:annotation:0.0.10'
+    implementation 'com.github.mtzhisham.KLQuery:util:0.0.10'
+    kapt 'com.github.mtzhisham.KLQuery:codegen:0.0.10'
 }
