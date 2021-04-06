@@ -1,0 +1,6 @@
+rootProject.name = "KLQuery"
+include ':klquery'
+include ':util'
+include ':codegen'
+include ':annotation'
+include ':app'
