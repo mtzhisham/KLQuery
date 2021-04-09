@@ -28,16 +28,15 @@ class QueryBuilder(
                                 .build()
                 ).addCode(
                         """
-                |if(query!= null){
-                |this.query = query
-                |isCascaded= true
                 |closestQueryName= this::class.simpleName?.replace("Query", "")?:"${info.queryClassName}"
                 |closestQueryName= closestQueryName.setFirsCharSmall()
+                |if(query!= null){
+                |this.query = query
+                |isCascaded= true                
                 |}
                 |else {  
                 | this.query = StringBuilder("{\"query\":\"query")
                 |this.query.append(" {\\r\\n ")
-                |closestQueryName="${info.queryClassName.setFirsCharSmall()}"
                 |this.query.append(closestQueryName)
                 |this.query.append(" {\\r\\n ")
                 |}             
@@ -143,22 +142,22 @@ class QueryBuilder(
                 |argsBuilder.append(name)
                 |argsBuilder.append(" : ")
                 |when(matcher){
-                |Matchers.TO-> {argsBuilder.append(""+ if(value::class.simpleName == "String") "\\\"${'$'}value\\\"" else ""+ value)
+                |Matchers.TO-> {argsBuilder.append(""+ if(value::class.simpleName == "String") "\\\\\"${'$'}value\\\\\"" else ""+ value)
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )}
-                |Matchers.MATCH-> {argsBuilder.append( "{match: " + if(value::class.simpleName == "String") "\"${'$'}value\"" else ""+ value + "}")
+                |Matchers.MATCH-> {argsBuilder.append( "{match: " + if(value::class.simpleName == "String") "\\\\\"${'$'}value\\\\\"" else ""+ value + "}")
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )}
-                |Matchers.EQ-> {argsBuilder.append( "{eq: " + if(value::class.simpleName == "String") "\"${'$'}value\"" else ""+ value + "}")
+                |Matchers.EQ-> {argsBuilder.append( "{eq: " + if(value::class.simpleName == "String") "\\\\\"${'$'}value\\\\\"" else ""+ value + "}")
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )}
                 |Matchers.FROMTO-> {
                 |val fromTypeString= (value as dev.moataz.klquery.util.KQLRange).from.second::class.simpleName == "String"
                 |val toTypeString= (value as dev.moataz.klquery.util.KQLRange).to.second::class.simpleName == "String"
-                |argsBuilder.append( "{from: " + if (fromTypeString) "\"${'$'}value.from.second\"" else ""+ value.from.second )
+                |argsBuilder.append( "{from: " + if (fromTypeString) "\\\\\"${'$'}value.from.second\\\\\"" else ""+ value.from.second )
                 |argsBuilder.append(", ")
-                |argsBuilder.append("{from: " + if (toTypeString) "\"${'$'}value.to.second\"" else ""+ value.to.second )
+                |argsBuilder.append("{from: " + if (toTypeString) "\\\\\"${'$'}value.to.second\\\\\"" else ""+ value.to.second )
                 |argsBuilder.append("}")
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )
                 |}
-                |Matchers.IN-> {argsBuilder.append( "{in: " + if(value::class.simpleName == "String") "\"${'$'}value\"" else ""+ value + "}")
+                |Matchers.IN-> {argsBuilder.append( "{in: " + if(value::class.simpleName == "String") "\\\\\"${'$'}value\\\\\"" else ""+ value + "}")
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )}
                 |Matchers.CUSTOM-> {argsBuilder.append( "{"+ value + "}")
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )}
