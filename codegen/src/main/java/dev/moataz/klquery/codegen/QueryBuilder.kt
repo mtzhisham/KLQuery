@@ -28,16 +28,15 @@ class QueryBuilder(
                                 .build()
                 ).addCode(
                         """
-                |if(query!= null){
-                |this.query = query
-                |isCascaded= true
                 |closestQueryName= this::class.simpleName?.replace("Query", "")?:"${info.queryClassName}"
                 |closestQueryName= closestQueryName.setFirsCharSmall()
+                |if(query!= null){
+                |this.query = query
+                |isCascaded= true                
                 |}
                 |else {  
                 | this.query = StringBuilder("{\"query\":\"query")
                 |this.query.append(" {\\r\\n ")
-                |closestQueryName="${info.queryClassName.setFirsCharSmall()}"
                 |this.query.append(closestQueryName)
                 |this.query.append(" {\\r\\n ")
                 |}             
