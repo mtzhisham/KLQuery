@@ -142,7 +142,7 @@ class QueryBuilder(
                 |argsBuilder.append(name)
                 |argsBuilder.append(" : ")
                 |when(matcher){
-                |Matchers.TO-> {argsBuilder.append(""+ if(value::class.simpleName == "String") "\\\"${'$'}value\\\"" else ""+ value)
+                |Matchers.TO-> {argsBuilder.append(""+ if(value::class.simpleName == "String") "\"${'$'}value\"" else ""+ value)
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )}
                 |Matchers.MATCH-> {argsBuilder.append( "{match: " + if(value::class.simpleName == "String") "\"${'$'}value\"" else ""+ value + "}")
                 |argsBuilder.append(if (args.size -1 != index) "," else "" )}
