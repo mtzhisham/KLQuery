@@ -1,6 +1,8 @@
 [![](https://jitpack.io/v/mtzhisham/KLQuery.svg)](https://jitpack.io/#mtzhisham/KLQuery)
 
 
+Annotation based GraphQL DSL query generator.
+
 ### Download
 
 ```groovy
