@@ -14,9 +14,9 @@
 
 ```groovy
 	dependencies {
-	               implementation 'com.github.mtzhisham.KLQuery:annotation:0.0.10'
-                   implementation 'com.github.mtzhisham.KLQuery:util:0.0.10'
-                   kapt 'com.github.mtzhisham.KLQuery:codegen:0.0.10'
+	               implementation 'com.github.mtzhisham.KLQuery:annotation:0.0.17'
+                   implementation 'com.github.mtzhisham.KLQuery:util:0.0.17'
+                   kapt 'com.github.mtzhisham.KLQuery:codegen:0.0.17'
 	}
 ```
 
